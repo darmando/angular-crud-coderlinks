@@ -1,8 +1,14 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { PaymentComponent } from './payment/payment/payment.component';
+const routes: Routes = [
+  { path: '', redirectTo: 'payment', pathMatch: 'full' },
+  {
+    path: 'payment',
+    component: PaymentComponent
+  },
+];
 
-
-const routes: Routes = [];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

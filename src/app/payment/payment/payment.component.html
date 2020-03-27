@@ -1,0 +1,36 @@
+
+
+
+  
+  <nz-divider nzText="Diego Lira - Payments"></nz-divider>
+  <div nz-row>
+      <div nz-col nzSpan="12" nzOffset="6">
+        <button nz-button nzType="primary" (click)="add()" >Add</button>
+        <nz-table #basicTable [nzData]="listPayment" nzPageSize=6>
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Payment</th>
+                <th>Paid</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let data of basicTable.data">
+                <td>{{ data.key }}</td>
+                <td>{{ data.name }}</td>
+                <td>{{ data.payment }}</td>
+                <td>{{ (!data.paid) ? 'NO' : 'YES' }}</td>
+                <td>
+                  <a (click)="open(true,data)">EDIT</a>
+                  <nz-divider nzType="vertical"></nz-divider>
+                  <a (click)="delete(data.key)">DELETE</a>
+                </td>
+              </tr>
+            </tbody>
+          </nz-table>
+    </div>
+  </div>
+
+  <app-payment-drawer *ngIf="showDrawer" [data]="data"  [isEdit]="isEdit" (save)="save($event)" (close)="close()"></app-payment-drawer>
